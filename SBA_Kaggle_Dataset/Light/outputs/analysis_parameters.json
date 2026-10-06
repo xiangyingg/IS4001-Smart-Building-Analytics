@@ -1,0 +1,14 @@
+{
+  "interval_minutes": 15,
+  "coverage": 0.9,
+  "target_lux": 500,
+  "lux_margin": 0.1,
+  "dim_cap": 0.2,
+  "train_start": "2019-03-06",
+  "train_end": "2019-04-01",
+  "test_start": "2019-04-01",
+  "test_end": "2019-05-01",
+  "peak_quantile": 0.95,
+  "timezone": "Asia/Bangkok (assumed local clock)",
+  "operating_hours": "Weekdays 08:00-18:00"
+}

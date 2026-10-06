@@ -1,0 +1,20 @@
+{
+  "building_observed_submeters": {
+    "complete_intervals": 22,
+    "expected_intervals": 2880,
+    "complete_coverage_fraction": 0.007638888888888889,
+    "status": "Insufficient coverage for a monthly building-peak claim",
+    "observed_submeter_peak_kw": 168.94674682617188,
+    "scenario_submeter_peak_kw": 168.94674682617188,
+    "conditional_coincident_reduction_kw": 0.0
+  },
+  "pilot_floor": {
+    "complete_intervals": 2875,
+    "expected_intervals": 2880,
+    "complete_coverage_fraction": 0.9982638888888888,
+    "status": "Observed supported intervals only",
+    "observed_submeter_peak_kw": 114.8239974975586,
+    "scenario_submeter_peak_kw": 114.8239974975586,
+    "conditional_coincident_reduction_kw": 0.0
+  }
+}
