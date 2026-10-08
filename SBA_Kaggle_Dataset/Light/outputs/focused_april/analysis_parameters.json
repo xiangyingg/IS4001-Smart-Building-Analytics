@@ -1,6 +1,6 @@
 {
   "interval_minutes": 15,
-  "coverage": 0.9,
+  "coverage": 1.0,
   "target_lux": 500,
   "lux_margin": 0.1,
   "dim_cap": 0.2,

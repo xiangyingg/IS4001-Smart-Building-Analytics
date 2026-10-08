@@ -1,0 +1,199 @@
+year,zone_id,target_lux,status,pair_coverage_pct,peak_pairs,baseline_peak_kw,cut_at_old_peak_kw,scenario_peak_reduction_kw,scenario_peak_reduction_pct,mean_cut_high_work_kw,high_work_above_target_pct
+2018,F1-z1,300,Demand only: no lux sensor,0.0,0,71.63,,,,,
+2018,F1-z1,500,Demand only: no lux sensor,0.0,0,71.63,,,,,
+2018,F1-z1,750,Demand only: no lux sensor,0.0,0,71.63,,,,,
+2018,F1-z2,300,Demand only: no lux sensor,0.0,0,132.95600000000002,,,,,
+2018,F1-z2,500,Demand only: no lux sensor,0.0,0,132.95600000000002,,,,,
+2018,F1-z2,750,Demand only: no lux sensor,0.0,0,132.95600000000002,,,,,
+2018,F1-z3,300,Demand only: no lux sensor,0.0,0,332.38666666666666,,,,,
+2018,F1-z3,500,Demand only: no lux sensor,0.0,0,332.38666666666666,,,,,
+2018,F1-z3,750,Demand only: no lux sensor,0.0,0,332.38666666666666,,,,,
+2018,F1-z4,300,Demand only: no lux sensor,0.0,0,65.69,,,,,
+2018,F1-z4,500,Demand only: no lux sensor,0.0,0,65.69,,,,,
+2018,F1-z4,750,Demand only: no lux sensor,0.0,0,65.69,,,,,
+2018,F2-z1,300,Review: incomplete paired data,31.984732824427482,357,53.04066666666666,,,,,0.0
+2018,F2-z1,500,Review: incomplete paired data,31.984732824427482,357,53.04066666666666,,,,,0.0
+2018,F2-z1,750,Review: incomplete paired data,31.984732824427482,357,53.04066666666666,,,,,0.0
+2018,F2-z2,300,Review: incomplete paired data,32.347328244274806,535,43.10666666666667,,,,,0.0
+2018,F2-z2,500,Review: incomplete paired data,32.347328244274806,535,43.10666666666667,,,,,0.0
+2018,F2-z2,750,Review: incomplete paired data,32.347328244274806,535,43.10666666666667,,,,,0.0
+2018,F2-z3,300,Review: incomplete paired data,32.36641221374046,254,4.0,,,,,0.0
+2018,F2-z3,500,Review: incomplete paired data,32.36641221374046,254,4.0,,,,,0.0
+2018,F2-z3,750,Review: incomplete paired data,32.36641221374046,254,4.0,,,,,0.0
+2018,F2-z4,300,Review: incomplete paired data,0.0,0,13.546000000000001,,,,,
+2018,F2-z4,500,Review: incomplete paired data,0.0,0,13.546000000000001,,,,,
+2018,F2-z4,750,Review: incomplete paired data,0.0,0,13.546000000000001,,,,,
+2018,F3-z1,300,Review: incomplete paired data,29.98091603053435,294,36.83866666666666,,,,,0.0
+2018,F3-z1,500,Review: incomplete paired data,29.98091603053435,294,36.83866666666666,,,,,0.0
+2018,F3-z1,750,Review: incomplete paired data,29.98091603053435,294,36.83866666666666,,,,,0.0
+2018,F3-z2,300,Review: incomplete paired data,31.717557251908396,278,34.28133333333333,,,,,0.0
+2018,F3-z2,500,Review: incomplete paired data,31.717557251908396,278,34.28133333333333,,,,,0.0
+2018,F3-z2,750,Review: incomplete paired data,31.717557251908396,278,34.28133333333333,,,,,0.0
+2018,F3-z3,300,Demand only: no lux sensor,0.0,0,2.2706666666666666,,,,,
+2018,F3-z3,500,Demand only: no lux sensor,0.0,0,2.2706666666666666,,,,,
+2018,F3-z3,750,Demand only: no lux sensor,0.0,0,2.2706666666666666,,,,,
+2018,F3-z4,300,Review: incomplete paired data,31.87022900763359,250,37.95666666666666,,,,,0.0
+2018,F3-z4,500,Review: incomplete paired data,31.87022900763359,250,37.95666666666666,,,,,0.0
+2018,F3-z4,750,Review: incomplete paired data,31.87022900763359,250,37.95666666666666,,,,,0.0
+2018,F3-z5,300,Review: incomplete paired data,20.763358778625953,157,22.118,,,,,0.0
+2018,F3-z5,500,Review: incomplete paired data,20.763358778625953,157,22.118,,,,,0.0
+2018,F3-z5,750,Review: incomplete paired data,20.763358778625953,157,22.118,,,,,0.0
+2018,F4-z1,300,Review: incomplete paired data,26.545801526717554,224,44.32933333333333,,,,,0.0
+2018,F4-z1,500,Review: incomplete paired data,26.545801526717554,224,44.32933333333333,,,,,0.0
+2018,F4-z1,750,Review: incomplete paired data,26.545801526717554,224,44.32933333333333,,,,,0.0
+2018,F4-z2,300,Review: incomplete paired data,30.68702290076336,218,31.170666666666666,,,,,0.0
+2018,F4-z2,500,Review: incomplete paired data,30.68702290076336,218,31.170666666666666,,,,,0.0
+2018,F4-z2,750,Review: incomplete paired data,30.68702290076336,218,31.170666666666666,,,,,0.0
+2018,F4-z3,300,Demand only: no lux sensor,0.0,0,1.9226666666666667,,,,,
+2018,F4-z3,500,Demand only: no lux sensor,0.0,0,1.9226666666666667,,,,,
+2018,F4-z3,750,Demand only: no lux sensor,0.0,0,1.9226666666666667,,,,,
+2018,F4-z4,300,Review: incomplete paired data,27.4618320610687,208,34.00066666666667,,,,,0.0
+2018,F4-z4,500,Review: incomplete paired data,27.4618320610687,208,34.00066666666667,,,,,0.0
+2018,F4-z4,750,Review: incomplete paired data,27.4618320610687,208,34.00066666666667,,,,,0.0
+2018,F4-z5,300,Review: incomplete paired data,29.103053435114507,263,20.231333333333332,,,,,0.0
+2018,F4-z5,500,Review: incomplete paired data,29.103053435114507,263,20.231333333333332,,,,,0.0
+2018,F4-z5,750,Review: incomplete paired data,29.103053435114507,263,20.231333333333332,,,,,0.0
+2018,F5-z1,300,Review: incomplete paired data,32.729007633587784,341,45.04666666666667,,,,,0.0
+2018,F5-z1,500,Review: incomplete paired data,32.729007633587784,341,45.04666666666667,,,,,0.0
+2018,F5-z1,750,Review: incomplete paired data,32.729007633587784,341,45.04666666666667,,,,,0.0
+2018,F5-z2,300,Review: incomplete paired data,28.816793893129773,183,31.336,,,,,0.0
+2018,F5-z2,500,Review: incomplete paired data,28.816793893129773,183,31.336,,,,,0.0
+2018,F5-z2,750,Review: incomplete paired data,28.816793893129773,183,31.336,,,,,0.0
+2018,F5-z3,300,Demand only: no lux sensor,0.0,0,1.732,,,,,
+2018,F5-z3,500,Demand only: no lux sensor,0.0,0,1.732,,,,,
+2018,F5-z3,750,Demand only: no lux sensor,0.0,0,1.732,,,,,
+2018,F5-z4,300,Review: incomplete paired data,33.3206106870229,247,41.05533333333333,,,,,0.0
+2018,F5-z4,500,Review: incomplete paired data,33.3206106870229,247,41.05533333333333,,,,,0.0
+2018,F5-z4,750,Review: incomplete paired data,33.3206106870229,247,41.05533333333333,,,,,0.0
+2018,F5-z5,300,Review: incomplete paired data,33.18702290076336,314,22.568,,,,,0.0
+2018,F5-z5,500,Review: incomplete paired data,33.18702290076336,314,22.568,,,,,0.0
+2018,F5-z5,750,Review: incomplete paired data,33.18702290076336,314,22.568,,,,,0.0
+2018,F6-z1,300,Review: incomplete paired data,30.87786259541985,321,32.98533333333334,,,,,0.0
+2018,F6-z1,500,Review: incomplete paired data,30.87786259541985,321,32.98533333333334,,,,,0.0
+2018,F6-z1,750,Review: incomplete paired data,30.87786259541985,321,32.98533333333334,,,,,0.0
+2018,F6-z2,300,Review: incomplete paired data,31.259541984732824,214,34.21066666666666,,,,,0.0
+2018,F6-z2,500,Review: incomplete paired data,31.259541984732824,214,34.21066666666666,,,,,0.0
+2018,F6-z2,750,Review: incomplete paired data,31.259541984732824,214,34.21066666666666,,,,,0.0
+2018,F6-z3,300,Demand only: no lux sensor,0.0,0,2.904,,,,,
+2018,F6-z3,500,Demand only: no lux sensor,0.0,0,2.904,,,,,
+2018,F6-z3,750,Demand only: no lux sensor,0.0,0,2.904,,,,,
+2018,F6-z4,300,Review: incomplete paired data,27.36641221374046,240,40.62533333333333,,,,,0.0
+2018,F6-z4,500,Review: incomplete paired data,27.36641221374046,240,40.62533333333333,,,,,0.0
+2018,F6-z4,750,Review: incomplete paired data,27.36641221374046,240,40.62533333333333,,,,,0.0
+2018,F6-z5,300,Review: incomplete paired data,28.606870229007637,170,23.47666666666667,,,,,0.0
+2018,F6-z5,500,Review: incomplete paired data,28.606870229007637,170,23.47666666666667,,,,,0.0
+2018,F6-z5,750,Review: incomplete paired data,28.606870229007637,170,23.47666666666667,,,,,0.0
+2018,F7-z1,300,Review: incomplete paired data,31.660305343511453,283,41.38666666666667,,,,,0.0
+2018,F7-z1,500,Review: incomplete paired data,31.660305343511453,283,41.38666666666667,,,,,0.0
+2018,F7-z1,750,Review: incomplete paired data,31.660305343511453,283,41.38666666666667,,,,,0.0
+2018,F7-z2,300,Review: incomplete paired data,33.721374045801525,142,32.996,,,,,0.0
+2018,F7-z2,500,Review: incomplete paired data,33.721374045801525,142,32.996,,,,,0.0
+2018,F7-z2,750,Review: incomplete paired data,33.721374045801525,142,32.996,,,,,0.0
+2018,F7-z3,300,Demand only: no lux sensor,0.0,0,0.9693333333333334,,,,,
+2018,F7-z3,500,Demand only: no lux sensor,0.0,0,0.9693333333333334,,,,,
+2018,F7-z3,750,Demand only: no lux sensor,0.0,0,0.9693333333333334,,,,,
+2018,F7-z4,300,Review: incomplete paired data,34.02671755725191,392,36.71266666666667,,,,,0.0
+2018,F7-z4,500,Review: incomplete paired data,34.02671755725191,392,36.71266666666667,,,,,0.0
+2018,F7-z4,750,Review: incomplete paired data,34.02671755725191,392,36.71266666666667,,,,,0.0
+2018,F7-z5,300,Review: incomplete paired data,30.935114503816795,277,24.584000000000003,,,,,0.0
+2018,F7-z5,500,Review: incomplete paired data,30.935114503816795,277,24.584000000000003,,,,,0.0
+2018,F7-z5,750,Review: incomplete paired data,30.935114503816795,277,24.584000000000003,,,,,0.0
+2019,F1-z1,300,Demand only: no lux sensor,0.0,0,56.89666666666666,,,,,
+2019,F1-z1,500,Demand only: no lux sensor,0.0,0,56.89666666666666,,,,,
+2019,F1-z1,750,Demand only: no lux sensor,0.0,0,56.89666666666666,,,,,
+2019,F1-z2,300,Demand only: no lux sensor,0.0,0,146.4,,,,,
+2019,F1-z2,500,Demand only: no lux sensor,0.0,0,146.4,,,,,
+2019,F1-z2,750,Demand only: no lux sensor,0.0,0,146.4,,,,,
+2019,F1-z3,300,Demand only: no lux sensor,0.0,0,76.36933333333333,,,,,
+2019,F1-z3,500,Demand only: no lux sensor,0.0,0,76.36933333333333,,,,,
+2019,F1-z3,750,Demand only: no lux sensor,0.0,0,76.36933333333333,,,,,
+2019,F1-z4,300,Demand only: no lux sensor,0.0,0,57.93,,,,,
+2019,F1-z4,500,Demand only: no lux sensor,0.0,0,57.93,,,,,
+2019,F1-z4,750,Demand only: no lux sensor,0.0,0,57.93,,,,,
+2019,F2-z1,300,Review: incomplete paired data,77.65325670498085,1503,55.47,,,,,0.0
+2019,F2-z1,500,Review: incomplete paired data,77.65325670498085,1503,55.47,,,,,0.0
+2019,F2-z1,750,Review: incomplete paired data,77.65325670498085,1503,55.47,,,,,0.0
+2019,F2-z2,300,Data eligible: assess lighting headroom,80.22988505747126,1247,46.938,0.0,0.0,0.0,0.0,0.0
+2019,F2-z2,500,Data eligible: assess lighting headroom,80.22988505747126,1247,46.938,0.0,0.0,0.0,0.0,0.0
+2019,F2-z2,750,Data eligible: assess lighting headroom,80.22988505747126,1247,46.938,0.0,0.0,0.0,0.0,0.0
+2019,F2-z3,300,Review: incomplete paired data,79.36781609195403,1114,3.0999999999999996,,,,,0.0
+2019,F2-z3,500,Review: incomplete paired data,79.36781609195403,1114,3.0999999999999996,,,,,0.0
+2019,F2-z3,750,Review: incomplete paired data,79.36781609195403,1114,3.0999999999999996,,,,,0.0
+2019,F2-z4,300,Review: incomplete paired data,78.85057471264368,1491,13.09533333333333,,,,,0.0
+2019,F2-z4,500,Review: incomplete paired data,78.85057471264368,1491,13.09533333333333,,,,,0.0
+2019,F2-z4,750,Review: incomplete paired data,78.85057471264368,1491,13.09533333333333,,,,,0.0
+2019,F3-z1,300,Review: incomplete paired data,70.90996168582376,1368,45.141333333333336,,,,,0.0
+2019,F3-z1,500,Review: incomplete paired data,70.90996168582376,1368,45.141333333333336,,,,,0.0
+2019,F3-z1,750,Review: incomplete paired data,70.90996168582376,1368,45.141333333333336,,,,,0.0
+2019,F3-z2,300,Review: incomplete paired data,76.0823754789272,1456,36.409333333333336,,,,,0.0
+2019,F3-z2,500,Review: incomplete paired data,76.0823754789272,1456,36.409333333333336,,,,,0.0
+2019,F3-z2,750,Review: incomplete paired data,76.0823754789272,1456,36.409333333333336,,,,,0.0
+2019,F3-z3,300,Demand only: no lux sensor,0.0,0,9.241333333333333,,,,,
+2019,F3-z3,500,Demand only: no lux sensor,0.0,0,9.241333333333333,,,,,
+2019,F3-z3,750,Demand only: no lux sensor,0.0,0,9.241333333333333,,,,,
+2019,F3-z4,300,Review: incomplete paired data,74.03256704980843,1311,39.73133333333333,,,,,0.0
+2019,F3-z4,500,Review: incomplete paired data,74.03256704980843,1311,39.73133333333333,,,,,0.0
+2019,F3-z4,750,Review: incomplete paired data,74.03256704980843,1311,39.73133333333333,,,,,0.0
+2019,F3-z5,300,Review: incomplete paired data,63.888888888888886,1120,22.691999999999997,,,,,0.0
+2019,F3-z5,500,Review: incomplete paired data,63.888888888888886,1120,22.691999999999997,,,,,0.0
+2019,F3-z5,750,Review: incomplete paired data,63.888888888888886,1120,22.691999999999997,,,,,0.0
+2019,F4-z1,300,Review: incomplete paired data,55.59386973180077,1096,44.94200000000001,,,,,0.0
+2019,F4-z1,500,Review: incomplete paired data,55.59386973180077,1096,44.94200000000001,,,,,0.0
+2019,F4-z1,750,Review: incomplete paired data,55.59386973180077,1096,44.94200000000001,,,,,0.0
+2019,F4-z2,300,Review: incomplete paired data,72.14559386973181,1278,30.982,,,,,0.0
+2019,F4-z2,500,Review: incomplete paired data,72.14559386973181,1278,30.982,,,,,0.0
+2019,F4-z2,750,Review: incomplete paired data,72.14559386973181,1278,30.982,,,,,0.0
+2019,F4-z3,300,Demand only: no lux sensor,0.0,0,1.978,,,,,
+2019,F4-z3,500,Demand only: no lux sensor,0.0,0,1.978,,,,,
+2019,F4-z3,750,Demand only: no lux sensor,0.0,0,1.978,,,,,
+2019,F4-z4,300,Review: incomplete paired data,60.03831417624521,1142,42.873333333333335,,,,,0.0
+2019,F4-z4,500,Review: incomplete paired data,60.03831417624521,1142,42.873333333333335,,,,,0.0
+2019,F4-z4,750,Review: incomplete paired data,60.03831417624521,1142,42.873333333333335,,,,,0.0
+2019,F4-z5,300,Review: incomplete paired data,76.39846743295018,1477,22.799999999999997,,,,,0.0
+2019,F4-z5,500,Review: incomplete paired data,76.39846743295018,1477,22.799999999999997,,,,,0.0
+2019,F4-z5,750,Review: incomplete paired data,76.39846743295018,1477,22.799999999999997,,,,,0.0
+2019,F5-z1,300,Review: incomplete paired data,65.45019157088122,1362,43.61266666666666,,,,,0.0
+2019,F5-z1,500,Review: incomplete paired data,65.45019157088122,1362,43.61266666666666,,,,,0.0
+2019,F5-z1,750,Review: incomplete paired data,65.45019157088122,1362,43.61266666666666,,,,,0.0
+2019,F5-z2,300,Review: incomplete paired data,53.89846743295019,1111,33.27866666666666,,,,,0.0
+2019,F5-z2,500,Review: incomplete paired data,53.89846743295019,1111,33.27866666666666,,,,,0.0
+2019,F5-z2,750,Review: incomplete paired data,53.89846743295019,1111,33.27866666666666,,,,,0.0
+2019,F5-z3,300,Demand only: no lux sensor,0.0,0,1.8306666666666669,,,,,
+2019,F5-z3,500,Demand only: no lux sensor,0.0,0,1.8306666666666669,,,,,
+2019,F5-z3,750,Demand only: no lux sensor,0.0,0,1.8306666666666669,,,,,
+2019,F5-z4,300,Review: incomplete paired data,70.33524904214559,1212,42.24133333333333,,,,,0.0
+2019,F5-z4,500,Review: incomplete paired data,70.33524904214559,1212,42.24133333333333,,,,,0.0
+2019,F5-z4,750,Review: incomplete paired data,70.33524904214559,1212,42.24133333333333,,,,,0.0
+2019,F5-z5,300,Review: incomplete paired data,74.48275862068967,1440,24.125333333333334,,,,,0.0
+2019,F5-z5,500,Review: incomplete paired data,74.48275862068967,1440,24.125333333333334,,,,,0.0
+2019,F5-z5,750,Review: incomplete paired data,74.48275862068967,1440,24.125333333333334,,,,,0.0
+2019,F6-z1,300,Review: incomplete paired data,58.39080459770115,1224,40.998666666666665,,,,,0.0
+2019,F6-z1,500,Review: incomplete paired data,58.39080459770115,1224,40.998666666666665,,,,,0.0
+2019,F6-z1,750,Review: incomplete paired data,58.39080459770115,1224,40.998666666666665,,,,,0.0
+2019,F6-z2,300,Review: incomplete paired data,54.42528735632184,1080,34.61066666666667,,,,,0.0
+2019,F6-z2,500,Review: incomplete paired data,54.42528735632184,1080,34.61066666666667,,,,,0.0
+2019,F6-z2,750,Review: incomplete paired data,54.42528735632184,1080,34.61066666666667,,,,,0.0
+2019,F6-z3,300,Demand only: no lux sensor,0.0,0,2.908666666666667,,,,,
+2019,F6-z3,500,Demand only: no lux sensor,0.0,0,2.908666666666667,,,,,
+2019,F6-z3,750,Demand only: no lux sensor,0.0,0,2.908666666666667,,,,,
+2019,F6-z4,300,Review: incomplete paired data,60.689655172413794,1081,43.388000000000005,,,,,0.0
+2019,F6-z4,500,Review: incomplete paired data,60.689655172413794,1081,43.388000000000005,,,,,0.0
+2019,F6-z4,750,Review: incomplete paired data,60.689655172413794,1081,43.388000000000005,,,,,0.0
+2019,F6-z5,300,Review: incomplete paired data,59.224137931034484,976,23.041999999999998,,,,,0.0
+2019,F6-z5,500,Review: incomplete paired data,59.224137931034484,976,23.041999999999998,,,,,0.0
+2019,F6-z5,750,Review: incomplete paired data,59.224137931034484,976,23.041999999999998,,,,,0.0
+2019,F7-z1,300,Review: incomplete paired data,77.63409961685824,1397,42.888666666666666,,,,,0.0
+2019,F7-z1,500,Review: incomplete paired data,77.63409961685824,1397,42.888666666666666,,,,,0.0
+2019,F7-z1,750,Review: incomplete paired data,77.63409961685824,1397,42.888666666666666,,,,,0.0
+2019,F7-z2,300,Review: incomplete paired data,78.81226053639847,1405,34.39266666666666,,,,,0.0
+2019,F7-z2,500,Review: incomplete paired data,78.81226053639847,1405,34.39266666666666,,,,,0.0
+2019,F7-z2,750,Review: incomplete paired data,78.81226053639847,1405,34.39266666666666,,,,,0.0
+2019,F7-z3,300,Demand only: no lux sensor,0.0,0,1.0053333333333334,,,,,
+2019,F7-z3,500,Demand only: no lux sensor,0.0,0,1.0053333333333334,,,,,
+2019,F7-z3,750,Demand only: no lux sensor,0.0,0,1.0053333333333334,,,,,
+2019,F7-z4,300,Review: incomplete paired data,76.58045977011494,1427,39.90933333333333,,,,,0.0
+2019,F7-z4,500,Review: incomplete paired data,76.58045977011494,1427,39.90933333333333,,,,,0.0
+2019,F7-z4,750,Review: incomplete paired data,76.58045977011494,1427,39.90933333333333,,,,,0.0
+2019,F7-z5,300,Review: incomplete paired data,75.17241379310344,1399,25.896,,,,,0.0
+2019,F7-z5,500,Review: incomplete paired data,75.17241379310344,1399,25.896,,,,,0.0
+2019,F7-z5,750,Review: incomplete paired data,75.17241379310344,1399,25.896,,,,,0.0

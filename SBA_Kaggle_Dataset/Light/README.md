@@ -10,11 +10,11 @@ Help facilities managers identify opportunities to reduce peak electricity deman
 
 Analyse CU-BEMS data for **Floors 1–7, July 2018–December 2019**, with a detailed Floor 2 study in April 2019. No 2017 data is available locally.
 
-The notebook checks data quality, identifies zone peaks and lighting contributions, assesses measured lux, and evaluates a conditional dimming scenario. Baseline and simulated demand use identical valid intervals; peaks are recomputed after dimming.
+Both notebooks check data quality, identify zone peaks and lighting contributions, assess measured lux, and evaluate conditional dimming scenarios. The broad EDA retains its eight-section guide; the focused notebook develops the March-calibrated April comparison. Both require complete 15-minute readings and recompute peaks on identical supported power intervals.
 
 ## Key finding
 
-The maximum valid recorded ambient-light value is **138 lux**. With an **illustrative 500-lux target**, the April scenario permits no dimming and produces **0 kW simulated reduction in all 33 zones**.
+The maximum valid recorded ambient-light value is **138 lux**. With an **illustrative 500-lux target**, **14 zones** pass the April evidence gates and show **0 kW supported conditional reduction**; **19 zones** have unavailable estimates. No positive reduction is supported under the stated rule.
 
 This does not prove that savings are impossible. Sensor readings have not been mapped to occupied task-plane illuminance, so a positive comfort-preserving reduction cannot yet be established.
 
@@ -33,8 +33,10 @@ Validate sensor placement, zone-specific lighting requirements and fixture dimma
 |---|---|
 | [PROJECT_SCOPE.md](PROJECT_SCOPE.md) | 3. Data Scope; 4. Analytics plan (EDA); 5. Expected Output; 6. Action (KPI) |
 | [SBA_Peak_Demand_Lighting_EDA.ipynb](SBA_Peak_Demand_Lighting_EDA.ipynb) | Full code, EDA and zone-level results |
+| [electricity_lighting_eda.ipynb](electricity_lighting_eda.ipynb) | Eight-section broad EDA guide, annual screening and the same April assessment |
 | [RESULTS_AND_VALIDATION.md](RESULTS_AND_VALIDATION.md) | Verified findings and limitations |
-| `outputs/` | Generated charts, result tables and cleaning audits |
+| `outputs/focused_april/` | Focused notebook charts, result tables and cleaning audits |
+| `outputs/full_period_eda/` | Broad EDA charts, audits, annual screening and April results |
 
 Install [requirements.txt](requirements.txt), open the notebook in Jupyter, and select **Restart Kernel → Run All**.
 

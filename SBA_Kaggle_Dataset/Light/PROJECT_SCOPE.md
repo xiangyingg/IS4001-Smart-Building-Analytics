@@ -1,128 +1,107 @@
-# Project plan: peak demand reduction subject to lighting comfort
+# Lighting comfort and zone peak demand: project plan
 
 **Business question:** How much can peak electricity demand be reduced in each zone without compromising lighting comfort?
 
-This document contains the four requested project sections:
-
-- [3. Data Scope](#3-data-scope)
-- [4. Analytics plan (EDA)](#4-analytics-plan-eda)
-- [5. Expected Output](#5-expected-output)
-- [6. Action (KPI)](#6-action-kpi)
-
-**Problem:** Lighting demand may contribute to zone and building peaks, but curtailment can reduce visual comfort. Quantify lighting's leverage at peak times, identify measured illuminance headroom, and determine where a monitored dimming trial is justified. Do not assume all lighting is waste or that low plug demand means a room is empty.
-
-**Who benefits?** Facilities managers receive a zone-specific intervention shortlist and evidence for sensor improvements. Building users retain lighting safeguards and manual override. University operations can reduce coincident electrical demand if field trials establish a viable intervention. Financial benefit depends on the actual tariff, not on dataset kW alone.
+**Business impact:** give facilities managers a defensible zone-level assessment, protect users’ visual comfort, and identify the measurements needed before investing in lighting controls. Any financial benefit depends on the actual electricity tariff.
 
 ## 3. Data Scope
 
-### Coverage and staged scope
+- **Broad EDA:** all 14 local CU-BEMS CSVs, Floors 1–7, July 2018–December 2019, covering 33 floor-zone pairs. There are no 2017 files. The incomplete 2019 Floor 6 tail remains part of the expected coverage denominator.
+- **Manageable study:** Floor 2, April 2019, with results also calculated for all other zones. Floor 2 is chosen for manageable scope and sensor availability, not a promised saving.
+- **Earlier calibration:** March 6–31, 2019 fixes each zone’s weekday-operating 95th-percentile demand trigger before April is evaluated. The March start is provisional; coverage determines whether calibration is usable.
+- **Core signals:** timestamps, floor-zone identifiers, lighting kW, same-zone lux, and total observed circuit kW. AC and plugs establish the total-demand baseline but are not controlled. Temperature/RH remain outside the lighting-reduction analysis.
+- **Missing evidence:** actual occupancy, task-plane illuminance, glare/uniformity, complaints, dimming commands, fixture response and utility main-meter/tariff information. No substitute columns or achieved savings are invented.
 
-- **All-floor EDA:** all 14 local CSVs in `../../data`, Floors 1–7, July 2018–December 2019. The requested 2017 observations are unavailable. The original CU-BEMS source confirms the actual dates; do not relabel years.
-- **Manageable detailed scope:** Floor 2 in April 2019, initially Zone 1, with other Floor 2 zones for comparison. This is an EDA starting point, not a predetermined dimming recommendation. Choose a different sensor-equipped zone if the results do not support Floor 2.
-- **Earlier calibration:** March 6–31, 2019 for each zone's peak trigger. Require at least 200 valid assumed-operating demand intervals. This is a screening threshold, not a tariff definition or proof that calibration data are representative.
-- **Expansion required by the question:** evaluate April scenarios for every zone; calculate coincident observed submeter totals across all zones. An all-floor demand question cannot be answered by multiplying one floor's savings.
-- **Fair scenario comparison:** baseline and simulated demand use identical April power intervals. No before/after improvement claim is made from unequal annual datasets. All available years are used to inspect demand and lux availability.
+### Cleaning and assumptions
 
-### Fields and grain
+Both notebooks use complete **15-minute mean kW** intervals. Each observed power circuit must have all 15 valid minute readings; missing circuits are never zero-filled. Lux screening uses the minimum valid reading across the same zone’s sensors and all 15 minutes. Zero readings are retained. Large positive power peaks are investigated rather than automatically removed.
 
-| Field | Use in this project | Important qualification |
-|---|---|---|
-| Individual AC power, kW | Sum installed AC circuits within each zone; explain load composition | No AC intervention simulated; thermal comfort would need a separate analysis |
-| Lighting power, kW | Direct controllable load for the hypothetical scenario | Dimmable hardware and kW-to-lux response are unverified |
-| Plug power, kW | Describe residual demand | Not an occupancy sensor; no automatic plug shutdown |
-| Ambient light, lux | Evaluate observed deficits and screening headroom | Ambient sensor does not establish task-plane or subjective lighting comfort |
-| Temperature, °C | Available in inputs; excluded from business-question analysis | Does not identify lighting-only peak reduction |
-| Relative humidity, % | Available in inputs; excluded from business-question analysis | No indoor-air-quality claim |
-| Timestamp and floor-zone ID | Align signals and calculate coincident peaks | Bangkok local clock assumed; `F2-Z1` and `F3-Z1` are distinct |
+Parse ISO and slash dates explicitly using file-wide day/month evidence. Audit invalid dates, duplicates, expected timestamps, nonnumeric/nonfinite readings, negative power/lux and sensor outages. Reindex to July–December 2018 and January–December 2019 without interpolation. The focused notebook quarantines all duplicate timestamps; the broad EDA removes exact duplicate rows and quarantines conflicting timestamps. This difference does not affect the current files, which have no duplicate rows in the audit.
 
-Raw grain is one minute per floor file. Analysis grain is one zone per 15-minute interval. Demand is **mean kW**, not the sum of kW across minutes. Observed energy is `sum(valid minute kW)/60`, in kWh. Confirm the utility demand interval separately.
+The source clock is assumed Bangkok local time. Weekday 08:00–18:00 is a schedule proxy, not observed occupancy. The default **500-lux target, 10% margin and 20% dimming cap are illustrative assumptions**, not verified zone-specific requirements. Test 300/500/750 lux and 10/20/30% caps, without lowering requirements merely to produce savings.
 
-The actual local schema is authoritative. No lux sensors means comfort cannot be assessed for that zone. Missing circuits within a file are never filled with zero; structurally absent circuit types contribute zero only to the **observed circuit total**, which is not a certified utility meter total. Cross-year schema differences are reported.
+### Common April assessment gates
 
-### Transparent cleaning and assumptions
+| Gate | Proposed requirement |
+|---|---|
+| Earlier power calibration | At least 200 valid operating intervals and 80% of expected March operating intervals |
+| Evaluation baseline | At least 95% of expected April power intervals |
+| Operating comfort evidence | At least 80% of expected April operating intervals with paired power/lux |
+| Individual control interval | All 15 power/lux minutes valid, lights on, demand at/above the frozen trigger, lux above target plus margin |
 
-1. Parse ISO dates explicitly. For slash dates, determine a file-wide convention using dates with a day greater than 12; reject mixed or wholly ambiguous conventions unless explicitly resolved. The local 2019 Floor 7 file is day/month/year.
-2. Audit actual start/end, expected minutes, invalid dates, duplicate timestamp rows, off-minute rows, out-of-period rows, and missing timestamps. Quarantine all duplicate timestamps; do not average conflicting readings.
-3. Coerce nonnumeric measurements to missing, audit failures, and mask nonfinite/negative power, negative lux, lux above the documented 10,000-lux sensor limit, RH outside 0–100%, and temperature outside the documented 0–90°C hardware range. Retain zero readings.
-4. Reindex to the advertised year coverage (July–December 2018; January–December 2019), exposing truncated files and gaps. Do not interpolate, carry forward, or replace missing readings with zero. The local 2019 Floor 6 file ends October 22 and contains a malformed trailing row.
-5. Sum zone power only where every observed circuit is valid at the same minute. Average component power over those same minutes. EDA demand intervals need at least 14/15 valid power minutes. Dimming requires all 15 power and lux minutes.
-6. Retain large power observations, flag robust high outliers and repeated values, and inspect extreme pilot minutes. Investigate meter faults before interpreting maxima. Coverage tables accompany peak and energy metrics.
-7. Assume weekday 08:00–18:00 operation; treat this as a schedule assumption, not occupancy. Test alternate hours. Holidays and academic schedules are unobserved.
-8. Use illustrative 300/500/750-lux target sensitivity and 10/20/30% dimming caps. The default 500-lux target plus 10% margin is not an approved zone-specific standard. Never transfer an office-task target automatically to staircases or corridors.
-
-No outdoor dataset is added: it is not needed for the first EDA and cannot establish a causal lighting response. The original source is cited for provenance and known sensor limitations. Pilot occupancy logs, task-plane measurements, fixture tests and user feedback would be new measured data, not invented columns.
+These are analyst screening gates, not industry standards or proof of comfort. Zones failing a gate retain their observed demand baseline but have **unavailable supported reduction estimates (NaN)**. No sensor means comfort cannot be assessed.
 
 ## 4. Analytics plan (EDA)
 
-| Analysis | Evidence it provides | Decision supported |
+The friend’s notebook keeps its existing eight-section guide. Its broad EDA is followed by the common chronological assessment within the existing scenario section. The focused notebook develops the same April assessment in more detail.
+
+| Step | Analysis | How it answers the question |
 |---|---|---|
-| File inventory, timestamp audit, schema drift | Actual years, floors, circuit/sensor matches, truncated files | Define valid scope and comparison periods |
-| Missingness by column, zone and month | Lux outages, absent sensors, power completeness | Determine which zones can support screening |
-| Zero rates, unique values, flat-value pairs, robust outlier flags | Suspicious signals versus legitimate off/dark periods | Identify measurements needing inspection |
-| Zone peaks, P95 demand, lighting share at the actual peak | Whether lighting has enough leverage over zone demand | Avoid recommending lighting control where AC dominates |
-| Pilot hourly profiles, weekdays/weekends, AC/light/plug mix | Peak timing and operating patterns | Decide when a pilot should run |
-| Operating lux distribution and lighting-versus-lux scatter | Deficit risk and possible headroom | Prioritise lighting adequacy checks or a dimming trial |
-| Paired April lighting-only scenario | Conditional kW and kWh changes by zone | Quantify a screening opportunity under stated assumptions |
-| Recomputed zone and coincident peaks | Peak movement and time alignment | Distinguish event saving from monthly/building peak reduction |
-| Target/cap/schedule sensitivity | Dependence on assumptions | Avoid claiming one arbitrary assumption as certainty |
+| 1 | Read and audit every floor/year CSV | Establish trustworthy scope and reveal truncated periods |
+| 2 | Map zones, circuits and lux availability; inspect monthly coverage, zeros and flat readings | Identify which zone-periods support comfort screening |
+| 3 | Calculate zone peaks, lighting at each peak and weekday/hourly patterns | Quantify lighting’s leverage and when demand is high |
+| 4 | Explore lighting-versus-lux relationships and measured below-target observations | Identify possible headroom or measurement/lighting concerns; avoid causal claims |
+| 5 | Fix March triggers and evaluate April on the same valid power intervals | Provide an earlier-calibrated, paired zone comparison |
+| 6 | Recompute maxima after simulated reductions; align all zones before summing | Detect relocated peaks and distinguish zone from coincident building benefit |
+| 7 | Vary task targets/caps, inspect peak quality and test calculation safeguards | Show dependence on assumptions and prevent artificial savings |
+| 8 | Export answer tables, figures, audits and parameters | Make the assessment reviewable and reproducible |
 
-### Scenario method and interpretation
+The broad notebook also retains **annual retrospective screening**. It applies dimming only at high-demand working intervals. Its same-year thresholds describe historical opportunities and are not a held-out controller test. April uses the earlier March thresholds in both notebooks.
 
-The March 95th percentile of operating zone demand fixes the trigger before the April evaluation. At April trigger intervals, eligible zones with full valid data and minimum lux above the guard use:
+### Conditional scenario and fair comparison
 
-`dim_fraction = min(cap, max(0, 1 − target_lux*(1+margin)/minimum_lux))`
+At eligible intervals:
 
-`saved_kW = lighting_kW * dim_fraction`
+`fraction = min(cap, max(0, 1 − target_lux × (1 + margin) / minimum_lux))`
 
-`scenario_total_kW = observed_total_kW − saved_kW`
+`scenario_kW = observed_total_kW − lighting_kW × fraction`
 
-`conditional_peak_reduction_kW = max(observed_total_kW) − max(scenario_total_kW)`
+`peak_reduction_kW = max(observed_total_kW) − max(scenario_kW)`
 
-Minimum lux is taken over all sensors present in the zone and all 15 minutes. Missing lux, absent sensors, insufficient earlier calibration, or incomplete action intervals produce no simulated action. Every valid baseline-power interval stays in the paired comparison, including weekends and missing-lux periods. Excluding low-lux or missing-lux intervals from the baseline could manufacture savings.
+Always compare identical valid power rows, including missing-lux periods and nonoperating hours, where no action occurs. Do not restrict the baseline to bright intervals. Recompute the maximum over the whole supported evaluation period because dimming may move the peak.
 
-The scenario assumes proportional electric-light lux response to lighting power and nonnegative daylight. Scaling all measured lux by `1−dim_fraction` is then a conservative proxy, but the proportional response, sensor placement and fixture capability are unverified. The offline interval minimum also uses information unavailable at the interval's start. This is **conditional retrospective screening**, not a demonstrated real-time controller or causal savings estimate.
+This assumes proportional electric-light response and nonnegative daylight. Scaling all measured lux is conservative only under those assumptions. Sensor placement and fixture behaviour are unknown. The interval minimum uses hindsight, so this is **offline screening, not real-time control or experimentally verified comfort**. No causal savings confidence interval can be derived from these assumptions alone.
 
-Report an unrestricted lighting-only ceiling separately: baseline peak minus the recomputed peak if all lighting were removed. This is an engineering bound that ignores comfort, not an actionable saving. Never sum independent zone peaks to infer a building peak.
+A supported zero means no reduction under the rule. An unavailable estimate means insufficient evidence. Neither establishes zero physical savings potential. Low complete-zone coverage prevents a reliable full-month building-peak claim. The unrestricted lighting-only ceiling in the focused notebook ignores comfort and is not a recommended saving.
 
 ## 5. Expected Output
 
-1. **Executed Jupyter notebook** with all code, assumptions, data quality tables, EDA charts, scenario results, sensitivity and automated calculation checks.
-2. **Audit exports:** input inventory, file audit, column quality, schema, zone/sensor map and monthly coverage.
-3. **Baseline tables:** zone/year observed peaks and coverage, lighting contribution at peak, observed energy and measured lux deficits. Annual figures describe the input coverage, not measured improvement.
-4. **Business-answer table for all zones:** baseline peak, recomputed conditional peak, reduction in kW and %, original-peak savings, unrestricted lighting-only ceiling, calibration size, measured lux coverage, active intervals, and assessment status.
-5. **Coincident results:** aligned baseline/scenario submeter demand, with no extrapolation to unmetered equipment or missing intervals.
-6. **Action shortlist or evidence that dimming is unsupported.** A zero scenario estimate is an informative result. It must not be rewritten as evidence of zero physical potential.
+1. **Two executed notebooks:** the existing broad EDA guide and the detailed April study, with matching common-April assessment methods.
+2. **Data-quality evidence:** file coverage against full calendars, timestamp audits, circuit/sensor availability and monthly power/lux completeness.
+3. **Zone baseline:** observed peak kW, timing, lighting contribution and measured lux context, with coverage qualifications.
+4. **Business-answer table for every zone:** observed baseline peak, recomputed scenario peak, supported reduction in kW and %, March trigger/calibration coverage, April coverage, active intervals and assessment status. Proven achievable comfort-preserving savings remain unavailable until tested.
+5. **Sensitivity and coincidence:** target/cap sensitivity, original-peak versus recomputed-peak effects, and aligned observed submeter totals with complete-interval coverage.
+6. **Action assessment:** identify a measurement-validation site; propose a dimming trial only if task-plane headroom is verified.
 
-Read `outputs/zone_peak_scenarios.csv` for exact zone results. The notebook and `RESULTS_AND_VALIDATION.md` describe the executed findings and their interpretation. Generated charts, tables and audits stay in `Light/outputs/`; the notebook recreates them on rerun.
+Generated results are organised as:
+
+- `outputs/focused_april/` — detailed notebook tables, figures and audits.
+- `outputs/full_period_eda/` — friend’s EDA, annual screening and common-April exports.
+
+The two folders prevent accidental overwriting. No separate Python helper scripts are required.
 
 ## 6. Action (KPI)
 
-### Action sequence
+**Current action:** validate sensor placement and occupied task-plane lighting adequacy before reducing lighting. The existing low ambient readings do not establish compliant task-plane headroom, or prove occupied spaces are underlit. Do not recommend curtailment solely because a circuit uses electricity outside assumed work hours.
 
-1. Facilities staff review zone function, fixture dimmability, task-plane requirements, sensor mapping, unexplained spikes and existing lighting deficits. Fix measurement/lighting inadequacy before trying to reduce light.
-2. If measured headroom exists at relevant peak times, pilot real-time feedback dimming in one sensor-equipped zone. Start at 10%, retain manual override, and increase only after the approved comfort guardrails pass. Revert on low task-plane lux or sensor failure. Do not automatically switch off lights based on plug load or assumed office hours.
-3. Randomise eligible peak events between unchanged lighting and dimming, or use randomised daily switchbacks. Freeze trigger, zone, task target and exclusion rules beforehand. Log occupancy, task-plane lux, daylight context, complaints, overrides and equipment availability.
-4. Report event-level demand effects with day-clustered uncertainty, comfort outcomes and coverage. Separately assess monthly peak reduction using a credible matched control counterfactual; an event-average effect is not the maximum-demand effect.
-5. Expand only after both electrical benefit and comfort outcomes are supported. Verify coincidence with building/main-meter peaks before claiming a building or tariff benefit.
+If measurements confirm headroom at relevant peak times, test a small dimming step in one zone using live task-plane feedback, manual override and immediate restoration on a breach or sensor failure. Confirm fixture dimmability first. Randomise eligible peak events or use randomised daily switchbacks; freeze triggers, targets and exclusions before the trial. Record occupancy, daylight context, feedback and equipment availability.
 
-### KPI framework
+| KPI | Definition | Proposed decision rule |
+|---|---|---|
+| Primary demand benefit | Matched control minus treatment 15-minute peak-event kW; also report % | Positive measured effect with day-clustered uncertainty; numeric target set after fixture calibration |
+| Monthly zone peak | Credible control-counterfactual maximum minus treatment maximum over the same supported calendar | Report separately from event averages; do not claim a peak effect without a credible counterfactual |
+| Lighting guardrail | Occupied task-plane minutes below approved target / valid occupied measured minutes | No increase versus control; restore lighting immediately on a breach |
+| Measurement reliability | Valid occupied task-plane lux minutes / expected occupied minutes | Proposed ≥95% coverage; disable dimming on sensor failure |
+| User experience | Complaints per occupied person-hour; overrides per treatment event | No increase versus control; review all overrides and glare/uniformity/flicker concerns |
+| Secondary energy benefit | Matched control minus treatment lighting kWh | Report separately from peak kW and only if comfort safeguards pass |
+| Coincident building benefit | Control-counterfactual versus treatment main-meter maximum | Verify coincidence and complete coverage before claiming building/tariff benefits |
 
-| KPI | Formula / unit | Baseline and evidence | Pilot success criterion |
-|---|---|---|---|
-| Primary: peak-event zone demand | Matched control 15-minute mean kW minus treatment kW; report kW and % | Randomised eligible events in the same zone | Positive measured effect with uncertainty; numeric target set after fixture calibration |
-| Monthly zone peak | Control counterfactual maximum kW minus treatment maximum kW over equal supported periods | Prespecified counterfactual with matched schedules and coverage | Positive reduction, reported separately from event average |
-| Comfort deficit rate | Occupied measured minutes below approved task-plane lux target / valid occupied measured minutes | Trial control and treatment, actual occupancy | No increase vs control; immediate revert on task-plane breach |
-| Measurement coverage | Valid occupied lux minutes / expected occupied minutes | Independent occupancy/task-plane logs | At least 95%; sensor failures disable dimming |
-| User comfort | Complaints per occupied person-hour; overrides per treatment event | Trial feedback and logs | No increase relative to control; review every override |
-| Secondary lighting energy | Control lighting kWh minus treatment lighting kWh over matched periods | Measured circuit power, supported minutes | Positive saving without comfort degradation |
-| Coincident building demand | Maximum aligned main-meter demand under control minus treatment | Main meter and synchronised zone data | Demonstrable coincident reduction, not sum of zone reductions |
+Occupancy, task-plane and feedback KPIs cannot be filled from the historical dataset alone. Set numeric savings targets after calibration; do not equate 20% lighting dimming with 20% total-zone demand reduction. Expand only after measured electrical benefit and comfort safeguards are both supported.
 
-The 95% coverage criterion is a proposed project gate, not a measured outcome or external standard. Do not promise 10% total-demand reduction because 10% dimming is offered: lighting may be only a small portion of zone demand. Lux alone cannot measure glare, uniformity or subjective comfort; include those in the site trial.
+## Sources
 
-## References and limitations
+- [CU-BEMS original paper](https://doi.org/10.1038/s41597-020-00582-3)
+- [Original dataset](https://doi.org/10.6084/m9.figshare.11726517)
+- Local inputs: `../data/*Floor*.csv`, unchanged by both notebooks.
 
-- Pipattanasomporn et al., *CU-BEMS, smart building electricity consumption and indoor environmental sensor datasets*, Scientific Data 7, 241 (2020): https://doi.org/10.1038/s41597-020-00582-3
-- Original data archive: https://doi.org/10.6084/m9.figshare.11726517
-- Local analysis inputs: `../../data/*Floor*.csv`; no source files modified.
-
-The original paper establishes dates, variables, sensor hardware limits and a long maintenance outage. No claim of a mandatory 500-lux requirement is made here. Confirm task-specific requirements with the building owner and applicable current standards before a trial. The two images mentioned in the request were not present in this session; sections follow the requested numbered deliverables directly.
+The sources establish provenance and measurement context; they do not validate this project’s illustrative task targets or proportional dimming model.
